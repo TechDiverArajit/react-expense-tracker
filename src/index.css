@@ -29,9 +29,38 @@
   display: flex;
   justify-content: space-around;
 }
-.Results ul li{
-  width: 97vw;
+.Results li{
+  width: 99vw;
   border: 2px solid black;
+  height: 40px;
+  padding-top: 20px;
   display: flex;
+  position: relative;
   justify-content: space-around;
 }
+
+li #title{
+  /* border: 2px solid black;
+  width: 200px;
+  word-break: break-all;
+  margin-left: 100px; */
+  position: absolute;
+  left: 150px;
+  
+}
+
+li #amount{
+  position: absolute;
+  left: 550px;
+}
+
+li #date{
+  position: absolute;
+  left: 900px;
+}
+
+li #category{
+  position: absolute;
+  left: 1300px;
+}
+
