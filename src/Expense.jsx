@@ -1,7 +1,9 @@
 import { useEffect, useReducer, useState } from "react"
 
 const Expense = ()=>{
-    const[transaction , setTransaction] = useState([])
+    const[transaction , setTransaction] = useState(()=>{
+      return JSON.parse(localStorage.getItem("trxn"))||[];
+    })
     const[title , setTitle] = useState("");
     const[amount , setAmount] = useState(0);
     const[date , setDate] = useState();
@@ -30,16 +32,19 @@ const Expense = ()=>{
                 category: category
             }
             setTransaction(t=>[...t ,objects])
-            
         }
+        
+        
 
         
     }
+    
     useEffect(()=>{
       const sum = transaction.reduce((acc, curr)=>{
         return acc+Number(curr.amount);
       },0);
       setTotal(sum);
+      localStorage.setItem("trxn" , JSON.stringify(transaction))
     },[transaction])
 
     const titleHandler = (e) =>{
@@ -145,7 +150,7 @@ const Expense = ()=>{
                   <div id="category">
                     <p>{trxn.category}</p>
                   </div>
-                  <div onClick={()=>del(idx)} id="img">
+                  <div  onClick={()=>del(idx)} id="img">
                     <img src="./public/delete.png" width={30} alt="" />
                   </div>
                 </li>
@@ -155,7 +160,7 @@ const Expense = ()=>{
 
         
       </div>
-      <h1>Total: {total} </h1>
+      <h1>Total: ₹{total} </h1>
     </div>
         </>
     )

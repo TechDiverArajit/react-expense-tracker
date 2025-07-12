@@ -76,7 +76,7 @@
 }
 .date{
   height: 40px;
-  width: 100px;
+  width: 130px;
 }
 .category{
   height: 40px;
@@ -116,6 +116,7 @@
   display: flex;
   position: relative;
   justify-content: space-around;
+  margin: auto;
 }
 
 li #title{
