@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useEffect, useReducer, useState } from "react"
 
 const Expense = ()=>{
     const[transaction , setTransaction] = useState([])
@@ -7,6 +7,18 @@ const Expense = ()=>{
     const[date , setDate] = useState();
     const[category , setCategory]  = useState();
     const[total , setTotal] = useState(0);
+
+    // const initialState={
+    //   transaction :[],
+    //   title:"",
+    //   amount:0,
+    //   date:"",
+    //   category:"",
+    //   total:0
+    // }
+
+
+    // const[state, trxnDispatch] = useReducer(reducer,initialState);
     
     
     const addTransaction = ()=>{
@@ -20,11 +32,14 @@ const Expense = ()=>{
             setTransaction(t=>[...t ,objects])
             
         }
+
         
     }
     useEffect(()=>{
-      setTotal(t=>t+Number(amount));
-      
+      const sum = transaction.reduce((acc, curr)=>{
+        return acc+Number(curr.amount);
+      },0);
+      setTotal(sum);
     },[transaction])
 
     const titleHandler = (e) =>{
@@ -40,36 +55,32 @@ const Expense = ()=>{
       setCategory(e.target.value)
     }
 
-    const del = (ele,idx)=>{
+    const del = (idx)=>{
       const newTrxn = transaction.filter((_,i)=> i!==idx);
       setTransaction(newTrxn);
       
-        const sum = newTrxn.reduce((acc, curr)=>{
-        return acc+Number(curr.amount);
-      },0);
-      setTotal(sum);
-      
       
     }
-
-    
     
 
     return(
         <>
         <div>
-      <h1>EXpense</h1>
-      <p>Track every expense like a ditector</p>
+          <div className="brand">
+            <h1>EXpense</h1>
+            <p>Track every expense like a ditector</p>
+          </div>
+      
 
       <div className="main-container">
-        <div>
-          <h1></h1>
+        <div className="heading1">
+          <h1>Enter Transaction details</h1>
         </div>
         <div className="expense-details">
           <input onChange={(e)=>titleHandler(e)} className="title" type="text" placeholder="Enter expense details" />
           <input onChange={(e)=>amountHandler(e)} className="amount" type="number" placeholder="Enter the amount" />
           <input onChange={(e)=>dateHandler(e)} className="date" type="date" />
-            <select onChange={(e)=>categoryHandler(e)}>
+            <select className="category" onChange={(e)=>categoryHandler(e)}>
               <option value="Food">Food</option>
               <option value="Transportation">Transportation</option>
               <option value="Housing & rent">Housing & rent</option>
@@ -83,6 +94,9 @@ const Expense = ()=>{
             </button>
             
         </div>
+        <div className="heading2"><h1>
+          Transactions
+          </h1></div>
         <div className="transaction">
           <div className="list-titles">
             
@@ -131,7 +145,7 @@ const Expense = ()=>{
                   <div id="category">
                     <p>{trxn.category}</p>
                   </div>
-                  <div onClick={()=>del(trxn.amount ,idx)} id="img">
+                  <div onClick={()=>del(idx)} id="img">
                     <img src="./public/delete.png" width={30} alt="" />
                   </div>
                 </li>

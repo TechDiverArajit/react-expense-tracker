@@ -4,25 +4,104 @@
   padding: 0;
   font-family: "Outfit", sans-serif;
 }
+.main-container{
+  
+}
 
 .expense-details{
   height: 80px;
-  width: fit-content;
+  width: 900px;
   border: 2px solid black;
-  border-radius: 30px;
+  border-radius: 0 0 30px 30px;
   padding: 0 20px 0 20px;
+  margin: 40px auto 100px auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.brand h1{
+  text-align: center;
+}
+.brand p{
+  text-align: center;
+}
+.heading1{
+  margin: auto;
+  position: relative;
+  top: 50px;
+  border-radius: 30px 30px 0 0 ;
+  text-align: center;
+  width: 940px;
+  background-color: rgb(141, 190, 239);
+  border: 2px solid black;
+}
+.heading2{
+  margin:  auto;
+  border-radius: 30px 30px 0 0 ;
+  text-align: center;
+  width: 99.2vw;
+  background-color: rgb(141, 190, 239);
+  border: 2px solid black;
+}
+
+.expense-details input{
+  border-radius: 20px;
+  border: none;
+  font-size: 16px;
+  background-color: aliceblue;
+  box-shadow: 5px 5px 5px gray;
+  padding-left: 10px;
+  outline: none;
+  margin-right: 20px;
+  
+}
+.expense-details select{
+  border-radius: 20px;
+  border: none;
+  background-color: aliceblue;
+  box-shadow: 5px 5px 5px gray;
+  padding-left: 10px;
+  outline: none;
+  margin-right: 20px;
+  font-size: 16px;
 }
 
 .title{
-  margin-top: 30px;
-  height: 20px;
+  height: 40px;
+  width: 260px;
 }
-
+.amount{
+  height: 40px;
+  width: 160px; 
+}
+.date{
+  height: 40px;
+  width: 100px;
+}
+.category{
+  height: 40px;
+  width: 160px;
+}
+.add-btn{
+  height: 30px;
+  width: 60px;
+  font-size: 16px;
+  border-radius: 20px;
+  border: none;
+  background-color: rgb(21, 144, 252);
+  box-shadow: 5px 5px 5px gray;
+  outline: none;
+  font-weight: 600;
+  margin-right: 20px;
+}
+.add-btn:active{
+  background-color: rgb(85, 164, 232);
+}
 .transaction{
   width: 97vw;
-  border-radius: 30px 30px 0 0;
   border: 2px solid black;
   padding: 20px;
+  margin: auto;
   
 }
 .list-titles{
