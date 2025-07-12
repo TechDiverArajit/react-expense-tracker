@@ -9,6 +9,9 @@ const Expense = ()=>{
     const[date , setDate] = useState();
     const[category , setCategory]  = useState();
     const[total , setTotal] = useState(0);
+    const[filterCat , setFilterCat] = useState("");
+    const[filter , setFilter] = useState(false);
+    const[filteredTrxn , setFilteredTrxn] = useState([]);
 
     // const initialState={
     //   transaction :[],
@@ -19,6 +22,12 @@ const Expense = ()=>{
     //   total:0
     // }
 
+    const filterHandler=(e)=>{
+      setFilterCat(e.target.value);
+      
+    }
+
+    
 
     // const[state, trxnDispatch] = useReducer(reducer,initialState);
     
@@ -47,6 +56,11 @@ const Expense = ()=>{
       localStorage.setItem("trxn" , JSON.stringify(transaction))
     },[transaction])
 
+    useEffect(()=>{
+      const cat = transaction.filter((ele)=>ele.category==filterCat);
+      setFilteredTrxn(cat);
+    },[filterCat])
+
     const titleHandler = (e) =>{
         setTitle(e.target.value);
     }
@@ -64,6 +78,10 @@ const Expense = ()=>{
       const newTrxn = transaction.filter((_,i)=> i!==idx);
       setTransaction(newTrxn);
       
+      
+    }
+    const fil = ()=>{
+      setFilter(!filter);
       
     }
     
@@ -135,7 +153,27 @@ const Expense = ()=>{
 
           </li>
             </div> */}
-            {transaction.map((trxn ,idx)=> 
+            {filterCat==""?transaction.map((trxn ,idx)=> 
+              <div className="Results">
+                <li key={idx}>
+                  <div id="title">
+                    <p>{trxn.title}</p>
+                  </div>
+                  <div id="amount">
+                    <p>{trxn.amount}</p>
+                  </div>
+                  <div id="date">
+                    <p>{trxn.date}</p>
+                  </div>
+                  <div id="category">
+                    <p>{trxn.category}</p>
+                  </div>
+                  <div  onClick={()=>del(idx)} id="img">
+                    <img src="./public/delete.png" width={30} alt="" />
+                  </div>
+                </li>
+              </div>
+            ):filteredTrxn.map((trxn ,idx)=> 
               <div className="Results">
                 <li key={idx}>
                   <div id="title">
@@ -161,6 +199,22 @@ const Expense = ()=>{
         
       </div>
       <h1>Total: ₹{total} </h1>
+      <div onClick={fil} className="filter">
+        <img src="./public/filter.png" width={50} alt="" />
+      </div>
+
+      <div className="card" style={{display: filter?"flex":"none"}}>
+        <select className="category" onChange={(e)=>filterHandler(e)}>
+              <option value="">Select</option>
+              <option value="Food">Food</option>
+              <option value="Transportation">Transportation</option>
+              <option value="Housing & rent">Housing & rent</option>
+              <option value="Bills & Subscriptions">Bills & Subscriptions</option>
+              <option value="Shopping">Shopping</option>
+              <option value="Travel">Travel</option>
+              <option value="Education">Education</option>
+        </select>
+      </div>
     </div>
         </>
     )
