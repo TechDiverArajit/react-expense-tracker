@@ -63,4 +63,12 @@ li #category{
   position: absolute;
   left: 1300px;
 }
+li #img{
+  position: absolute;
+  right:190px;
+}
+#img:hover{
+  background-color: gray;
+  border-radius: 10px;
+}
 

@@ -1,14 +1,16 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 
 const Expense = ()=>{
     const[transaction , setTransaction] = useState([])
     const[title , setTitle] = useState("");
-    const[amount , setAmount] = useState();
+    const[amount , setAmount] = useState(0);
     const[date , setDate] = useState();
     const[category , setCategory]  = useState();
+    const[total , setTotal] = useState(0);
+    
     
     const addTransaction = ()=>{
-        if(title.trim!=""){
+        if(title.trim!="" && amount!=""){
             const objects = {
                 title: title,
                 amount: amount,
@@ -20,6 +22,10 @@ const Expense = ()=>{
         }
         
     }
+    useEffect(()=>{
+      setTotal(t=>t+Number(amount));
+      
+    },[transaction])
 
     const titleHandler = (e) =>{
         setTitle(e.target.value);
@@ -33,6 +39,20 @@ const Expense = ()=>{
     const categoryHandler = (e)=>{
       setCategory(e.target.value)
     }
+
+    const del = (ele,idx)=>{
+      const newTrxn = transaction.filter((_,i)=> i!==idx);
+      setTransaction(newTrxn);
+      
+        const sum = newTrxn.reduce((acc, curr)=>{
+        return acc+Number(curr.amount);
+      },0);
+      setTotal(sum);
+      
+      
+    }
+
+    
     
 
     return(
@@ -42,6 +62,9 @@ const Expense = ()=>{
       <p>Track every expense like a ditector</p>
 
       <div className="main-container">
+        <div>
+          <h1></h1>
+        </div>
         <div className="expense-details">
           <input onChange={(e)=>titleHandler(e)} className="title" type="text" placeholder="Enter expense details" />
           <input onChange={(e)=>amountHandler(e)} className="amount" type="number" placeholder="Enter the amount" />
@@ -93,9 +116,9 @@ const Expense = ()=>{
 
           </li>
             </div> */}
-            {transaction.map((trxn)=> 
+            {transaction.map((trxn ,idx)=> 
               <div className="Results">
-                <li>
+                <li key={idx}>
                   <div id="title">
                     <p>{trxn.title}</p>
                   </div>
@@ -108,6 +131,9 @@ const Expense = ()=>{
                   <div id="category">
                     <p>{trxn.category}</p>
                   </div>
+                  <div onClick={()=>del(trxn.amount ,idx)} id="img">
+                    <img src="./public/delete.png" width={30} alt="" />
+                  </div>
                 </li>
               </div>
             )}
@@ -115,6 +141,7 @@ const Expense = ()=>{
 
         
       </div>
+      <h1>Total: {total} </h1>
     </div>
         </>
     )
