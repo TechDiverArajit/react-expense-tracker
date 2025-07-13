@@ -155,16 +155,17 @@ li #img{
 .filter{
   position: absolute;
   right: 20px;
-  width: 60px;
-  height: 60px;
+  width: 90px;
+  height: 90px;
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
   border-radius: 50%;
 
 }
 .filter:hover{
-  background-color: aqua;
+  background-color: rgb(198, 222, 222);
 }
 
 .card{
@@ -180,4 +181,24 @@ li #img{
   right: 5%;
 }
 
+.add-trxn{
+  display: none;
+}
+@media (max-width:600px){
+  .heading1{
+    height: 40px;
+    width: 340px;
+    font-size: 12px;
+  }
+  .expense-details{
+    height: 400px;
+    width: 300px;
+    flex-direction: column;
+    gap: 20px;
+    background-color: rgb(213, 216, 218);
+  }
+  
+
+
+}
 

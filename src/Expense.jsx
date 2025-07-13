@@ -1,4 +1,5 @@
 import { useEffect, useReducer, useState } from "react"
+import Category from "./Category";
 
 const Expense = ()=>{
     const[transaction , setTransaction] = useState(()=>{
@@ -12,6 +13,7 @@ const Expense = ()=>{
     const[filterCat , setFilterCat] = useState("");
     const[filter , setFilter] = useState(false);
     const[filteredTrxn , setFilteredTrxn] = useState([]);
+    const[addTrxn , setAddTrxn] = useState(false);
 
     // const initialState={
     //   transaction :[],
@@ -188,9 +190,7 @@ const Expense = ()=>{
                   <div id="category">
                     <p>{trxn.category}</p>
                   </div>
-                  <div  onClick={()=>del(idx)} id="img">
-                    <img src="./public/delete.png" width={30} alt="" />
-                  </div>
+                  
                 </li>
               </div>
             )}
@@ -201,20 +201,14 @@ const Expense = ()=>{
       <h1>Total: ₹{total} </h1>
       <div onClick={fil} className="filter">
         <img src="./public/filter.png" width={50} alt="" />
+        <h4>Filter </h4>
+      </div>
+      
+      <div className="add-trxn">
+        <img src="./public/add.png" alt="" />
       </div>
 
-      <div className="card" style={{display: filter?"flex":"none"}}>
-        <select className="category" onChange={(e)=>filterHandler(e)}>
-              <option value="">Select</option>
-              <option value="Food">Food</option>
-              <option value="Transportation">Transportation</option>
-              <option value="Housing & rent">Housing & rent</option>
-              <option value="Bills & Subscriptions">Bills & Subscriptions</option>
-              <option value="Shopping">Shopping</option>
-              <option value="Travel">Travel</option>
-              <option value="Education">Education</option>
-        </select>
-      </div>
+      <Category filter={filter} />
     </div>
         </>
     )
