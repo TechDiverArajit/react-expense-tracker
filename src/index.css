@@ -197,7 +197,46 @@ li #img{
     gap: 20px;
     background-color: rgb(213, 216, 218);
   }
+
+  .transaction{
+    display: none;
+  }
   
+  li #title{
+  position: absolute;
+  left: 10px;
+  bottom: 30px;
+  font-weight: 700;
+  
+}
+
+li #amount{
+  position: absolute;
+  left: 190px
+}
+
+li #date{
+  position: absolute;
+  left: 10px;
+  bottom: 5px;
+  
+}
+
+li #category{
+  position: absolute;
+  left: 270px;
+  font-weight: 500;
+}
+li #img{
+  position: absolute;
+  right: 20px;
+  
+}
+#img:hover{
+  background-color: gray;
+  border-radius: 10px;
+  
+}
 
 
 }

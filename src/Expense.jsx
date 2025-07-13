@@ -162,7 +162,7 @@ const Expense = ()=>{
                     <p>{trxn.title}</p>
                   </div>
                   <div id="amount">
-                    <p>{trxn.amount}</p>
+                    <p>₹{trxn.amount}</p>
                   </div>
                   <div id="date">
                     <p>{trxn.date}</p>
@@ -182,7 +182,7 @@ const Expense = ()=>{
                     <p>{trxn.title}</p>
                   </div>
                   <div id="amount">
-                    <p>{trxn.amount}</p>
+                    <p>₹{trxn.amount}</p>
                   </div>
                   <div id="date">
                     <p>{trxn.date}</p>
