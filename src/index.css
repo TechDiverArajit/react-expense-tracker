@@ -238,6 +238,20 @@ li #img{
   
 }
 
+.card{
+  width: 200px;
+  right: 80px;
+  bottom: 0px;
+}
+.filter{
+  width: 60px;
+  height: 60px;
+}
+.filter img{
+  width: 30px;
+  height: 30px;
+}
+
 
 }
 

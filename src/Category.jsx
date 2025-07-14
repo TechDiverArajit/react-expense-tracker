@@ -1,5 +1,5 @@
 import Expense from "./expense"
-const Category = ({filter})=>{
+const Category = ({filter , filterHandler})=>{
     return (
         <>
         <div className="card" style={{display: filter?"flex":"none"}}>

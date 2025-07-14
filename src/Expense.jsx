@@ -208,7 +208,7 @@ const Expense = ()=>{
         <img src="./public/add.png" alt="" />
       </div>
 
-      <Category filter={filter} />
+      <Category filter={filter} filterHandler={filterHandler} />
     </div>
         </>
     )
