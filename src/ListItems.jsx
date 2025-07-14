@@ -1,4 +1,4 @@
-const Listitems = ({filterCat , transaction , filteredTrxn})=>{
+const Listitems = ({filterCat , transaction , filteredTrxn , del})=>{
     return(
         <>
         {filterCat==""?transaction.map((trxn ,idx)=> 
@@ -17,7 +17,7 @@ const Listitems = ({filterCat , transaction , filteredTrxn})=>{
                     <p>{trxn.category}</p>
                   </div>
                   <div  onClick={()=>del(idx)} id="img">
-                    <img src="/src/assets/delete.png" width={30} alt="" />
+                    <img src="/delete.png" width={30} alt="" />
                   </div>
                 </li>
               </div>

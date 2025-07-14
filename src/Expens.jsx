@@ -134,19 +134,19 @@ const Expens = ()=>{
           </div>
         </div>
         <ul>
-            <Listitems filterCat={filterCat} transaction={transaction} filteredTrxn={filteredTrxn}/>
+            <Listitems filterCat={filterCat} transaction={transaction} filteredTrxn={filteredTrxn} del={del}/>
         </ul>
 
         
       </div>
       <h1>Total: ₹{total} </h1>
       <div onClick={fil} className="filter">
-        <img src="/src/assets/filter.png" width={50} alt="" />
+        <img src="/filter.png" width={50} alt="" />
         <h4>Filter </h4>
       </div>
       
       <div className="add-trxn">
-        <img src="/src/assets/add.png" alt="" />
+        <img src="/add.png" alt="" />
       </div>
 
       <Category filter={filter} filterHandler={filterHandler} />
