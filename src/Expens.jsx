@@ -53,17 +53,25 @@ const Expens = ()=>{
     }
     
     useEffect(()=>{
-      const sum = transaction.reduce((acc, curr)=>{
+      localStorage.setItem("trxn" , JSON.stringify(transaction))
+      if(filterCat){
+        const cat = transaction.filter((ele)=>ele.category==filterCat);
+        setFilteredTrxn(cat);
+        const sum1 = cat.reduce((acc, curr)=>{
+        return acc+Number(curr.amount);
+        },0)
+        setTotal(sum1);
+      }else{
+        const sum = transaction.reduce((acc, curr)=>{
         return acc+Number(curr.amount);
       },0);
       setTotal(sum);
-      localStorage.setItem("trxn" , JSON.stringify(transaction))
-    },[transaction])
+      }
+      
+      
+    },[transaction,filterCat])
 
-    useEffect(()=>{
-      const cat = transaction.filter((ele)=>ele.category==filterCat);
-      setFilteredTrxn(cat);
-    },[filterCat])
+    
 
     const titleHandler = (e) =>{
         setTitle(e.target.value);
