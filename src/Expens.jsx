@@ -1,7 +1,7 @@
 import { useEffect, useReducer, useState } from "react"
 import Category from "./Category";
 
-const Expense = ()=>{
+const Expens = ()=>{
     const[transaction , setTransaction] = useState(()=>{
       return JSON.parse(localStorage.getItem("trxn"))||[];
     })
@@ -13,7 +13,7 @@ const Expense = ()=>{
     const[filterCat , setFilterCat] = useState("");
     const[filter , setFilter] = useState(false);
     const[filteredTrxn , setFilteredTrxn] = useState([]);
-    const[addTrxn , setAddTrxn] = useState(false);
+    
 
     // const initialState={
     //   transaction :[],
@@ -106,6 +106,7 @@ const Expense = ()=>{
           <input onChange={(e)=>amountHandler(e)} className="amount" type="number" placeholder="Enter the amount" />
           <input onChange={(e)=>dateHandler(e)} className="date" type="date" />
             <select className="category" onChange={(e)=>categoryHandler(e)}>
+                <option value="">Select</option>
               <option value="Food">Food</option>
               <option value="Transportation">Transportation</option>
               <option value="Housing & rent">Housing & rent</option>
@@ -213,4 +214,4 @@ const Expense = ()=>{
         </>
     )
 }
-export default Expense
+export default Expens

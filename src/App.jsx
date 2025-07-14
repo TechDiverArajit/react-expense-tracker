@@ -1,10 +1,10 @@
-import Expense from "./expense"
+import Expens from "./Expens"
 function App() {
   
 
   return (
     <>
-      <Expense/>
+      <Expens/>
     </>
   )
 }

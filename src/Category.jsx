@@ -1,4 +1,4 @@
-import Expense from "./expense"
+
 const Category = ({filter , filterHandler})=>{
     return (
         <>
