@@ -108,10 +108,15 @@
   display: flex;
   justify-content: space-around;
 }
+.Results{
+  
+}
+
 .Results li{
   width: 99vw;
   border: 2px solid black;
-  height: 40px;
+  min-height: 30px;
+  height: auto;
   padding-top: 20px;
   display: flex;
   position: relative;
@@ -120,12 +125,11 @@
 }
 
 li #title{
-  /* border: 2px solid black;
   width: 200px;
   word-break: break-all;
-  margin-left: 100px; */
   position: absolute;
   left: 150px;
+  
   
 }
 
@@ -146,6 +150,7 @@ li #category{
 li #img{
   position: absolute;
   right:190px;
+  bottom: 4px;
 }
 #img:hover{
   background-color: gray;
@@ -205,6 +210,7 @@ li #img{
   li #title{
   position: absolute;
   left: 10px;
+  width: 100px;
   bottom: 30px;
   font-weight: 700;
   

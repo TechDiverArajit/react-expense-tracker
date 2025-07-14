@@ -1,5 +1,7 @@
 import { useEffect, useReducer, useState } from "react"
 import Category from "./Category";
+import Listitems from "./ListItems";
+import ExpenseInfo from "./ExpenseInfo";
 
 const Expens = ()=>{
     const[transaction , setTransaction] = useState(()=>{
@@ -8,7 +10,7 @@ const Expens = ()=>{
     const[title , setTitle] = useState("");
     const[amount , setAmount] = useState(0);
     const[date , setDate] = useState();
-    const[category , setCategory]  = useState();
+    const[category , setCategory]  = useState("");
     const[total , setTotal] = useState(0);
     const[filterCat , setFilterCat] = useState("");
     const[filter , setFilter] = useState(false);
@@ -35,7 +37,7 @@ const Expens = ()=>{
     
     
     const addTransaction = ()=>{
-        if(title.trim!="" && amount!=""){
+        if(title.trim!="" && date!="" && category!="" && amount!=""){
             const objects = {
                 title: title,
                 amount: amount,
@@ -102,9 +104,7 @@ const Expens = ()=>{
           <h1>Enter Transaction details</h1>
         </div>
         <div className="expense-details">
-          <input onChange={(e)=>titleHandler(e)} className="title" type="text" placeholder="Enter expense details" />
-          <input onChange={(e)=>amountHandler(e)} className="amount" type="number" placeholder="Enter the amount" />
-          <input onChange={(e)=>dateHandler(e)} className="date" type="date" />
+          <ExpenseInfo titleHandler={titleHandler} dateHandler={dateHandler} amountHandler={amountHandler}/>
             <select className="category" onChange={(e)=>categoryHandler(e)}>
                 <option value="">Select</option>
               <option value="Food">Food</option>
@@ -134,79 +134,19 @@ const Expens = ()=>{
           </div>
         </div>
         <ul>
-            {/* <div className="Results">
-                <li>
-                    <div id="title" >
-                        <p> Booked a hotel </p>
-                    </div>
-
-          <div id="amount">
-            <p>
-            10$
-            </p>
-          </div>
-          
-          <div id="date">
-            <p>10 july , 2025</p>
-          </div>
-
-        <div id="category">
-            <p >Travel</p>
-        </div>
-
-          </li>
-            </div> */}
-            {filterCat==""?transaction.map((trxn ,idx)=> 
-              <div className="Results">
-                <li key={idx}>
-                  <div id="title">
-                    <p>{trxn.title}</p>
-                  </div>
-                  <div id="amount">
-                    <p>₹{trxn.amount}</p>
-                  </div>
-                  <div id="date">
-                    <p>{trxn.date}</p>
-                  </div>
-                  <div id="category">
-                    <p>{trxn.category}</p>
-                  </div>
-                  <div  onClick={()=>del(idx)} id="img">
-                    <img src="/public/delete.png" width={30} alt="" />
-                  </div>
-                </li>
-              </div>
-            ):filteredTrxn.map((trxn ,idx)=> 
-              <div className="Results">
-                <li key={idx}>
-                  <div id="title">
-                    <p>{trxn.title}</p>
-                  </div>
-                  <div id="amount">
-                    <p>₹{trxn.amount}</p>
-                  </div>
-                  <div id="date">
-                    <p>{trxn.date}</p>
-                  </div>
-                  <div id="category">
-                    <p>{trxn.category}</p>
-                  </div>
-                  
-                </li>
-              </div>
-            )}
+            <Listitems filterCat={filterCat} transaction={transaction} filteredTrxn={filteredTrxn}/>
         </ul>
 
         
       </div>
       <h1>Total: ₹{total} </h1>
       <div onClick={fil} className="filter">
-        <img src="/public/filter.png" width={50} alt="" />
+        <img src="/src/assets/filter.png" width={50} alt="" />
         <h4>Filter </h4>
       </div>
       
       <div className="add-trxn">
-        <img src="/public/add.png" alt="" />
+        <img src="/src/assets/add.png" alt="" />
       </div>
 
       <Category filter={filter} filterHandler={filterHandler} />
