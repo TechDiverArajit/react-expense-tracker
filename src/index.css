@@ -212,7 +212,7 @@ li #img{
 
 li #amount{
   position: absolute;
-  left: 190px
+  left: 140px
 }
 
 li #date{
@@ -224,12 +224,12 @@ li #date{
 
 li #category{
   position: absolute;
-  left: 270px;
+  left: 230px;
   font-weight: 500;
 }
 li #img{
   position: absolute;
-  right: 20px;
+  right: 40px;
   
 }
 #img:hover{
@@ -240,12 +240,13 @@ li #img{
 
 .card{
   width: 200px;
-  right: 80px;
-  bottom: 0px;
+  margin-right: 60px;
+  
 }
 .filter{
   width: 60px;
   height: 60px;
+  
 }
 .filter img{
   width: 30px;

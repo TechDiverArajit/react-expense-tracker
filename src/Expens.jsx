@@ -172,7 +172,7 @@ const Expens = ()=>{
                     <p>{trxn.category}</p>
                   </div>
                   <div  onClick={()=>del(idx)} id="img">
-                    <img src="./public/delete.png" width={30} alt="" />
+                    <img src="/public/delete.png" width={30} alt="" />
                   </div>
                 </li>
               </div>
@@ -201,12 +201,12 @@ const Expens = ()=>{
       </div>
       <h1>Total: ₹{total} </h1>
       <div onClick={fil} className="filter">
-        <img src="./public/filter.png" width={50} alt="" />
+        <img src="/public/filter.png" width={50} alt="" />
         <h4>Filter </h4>
       </div>
       
       <div className="add-trxn">
-        <img src="./public/add.png" alt="" />
+        <img src="/public/add.png" alt="" />
       </div>
 
       <Category filter={filter} filterHandler={filterHandler} />
